@@ -18,22 +18,26 @@ export function App() {
     {
       id: '2',
       title:'teste 2',
-      isCompleted:false
+      isCompleted:true
     }
   ])
-  
+
   function addTask(taskTitle:string) {
     setTasks([
-      ...tasks,
-       {
+      ...tasks,{
         id:crypto.randomUUID(),
         title:taskTitle,
         isCompleted:false
       }
     ])
   }
+  
+  function deleteTaskById(taskId:string) {
+    const newTask = tasks.filter((task) => task.id !== taskId)
+    setTasks(newTask)
+  }
   return <div>
     <Header onAddTask={addTask}/>
-    <Tasks tasks={tasks}/>
+    <Tasks tasks={tasks} onDelete={deleteTaskById}/>
   </div>
 }
