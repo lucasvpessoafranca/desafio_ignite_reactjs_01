@@ -1,14 +1,18 @@
 import styles from './Task.module.css'
 import {TbTrash} from 'react-icons/tb'
+import { ITask } from '../../App'
 
-export function Task() {
+interface Props {
+    task:ITask
+}
+export function Task({task}: Props) {
 
     return (
         <div className={styles.task}>
             <button className={styles.checkContainer}>
                 <div></div>
             </button>
-            <p>Texto direcionado para a tela de task</p>
+            <p>{task.title}</p>
             <button className={styles.deleteButton}>
                 <TbTrash size={20}/>
             </button>
